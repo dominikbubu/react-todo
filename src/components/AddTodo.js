@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import TodoList from './TodoList'
  
 export default function AddTodo() {
@@ -28,6 +28,9 @@ export default function AddTodo() {
         ))
     }
 
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos))
+    }, [todos])
     return (
         <div className=''>
             <div className='flex justify-center p-10'>
