@@ -7,7 +7,12 @@ export default function AddTodo() {
         title: '',
         completed: false
     })
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState(() => {
+        // getting stored value
+        const saved = localStorage.getItem("todos");
+        const initialValue = JSON.parse(saved);
+        return initialValue || [];
+      });
 
     const deleteTodo = (id) => {
         setTodos(todos.filter(todo => todo.id !== id))
